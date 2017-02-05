@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/activity_vertical_margin"
+    tools:context="org.kemaman.kelulut_main.LocationActivity"
+    android:orientation="vertical" >
+
+    <pl.bclogic.pulsator4droid.library.PulsatorLayout
+        android:id="@+id/pulsator"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal"
+        app:pulse_count="6"
+        app:pulse_duration="7000"
+        app:pulse_repeat="0"
+        app:pulse_color="@color/kelulut"
+        app:pulse_startFromScratch="false"
+        app:pulse_interpolator="Linear">
+    </pl.bclogic.pulsator4droid.library.PulsatorLayout>
+
+    <TextView
+        android:id="@+id/last_known_location_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Sample location"
+        android:padding="18dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/btnProceed"
+        android:text="Proceed"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@color/btn_logut_bg"
+        android:textColor="@color/white" />
+
+</LinearLayout>

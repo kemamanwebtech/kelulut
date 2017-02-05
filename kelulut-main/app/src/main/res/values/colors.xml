@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="kelulut">#ffc04b</color>
+
+    <color name="colorPrimary">#b27300</color>
+    <color name="colorPrimaryDark">#664200</color>
+    <color name="colorAccent">#332100</color>
+
+
+    <color name="bg_login">#FFA500</color>
+    <color name="bg_register">#FFA500</color>
+
+    <color name="bg_main">#FFA500</color>
+    <color name="white">#ffffff</color>
+    <color name="input_login">#222222</color>
+    <color name="input_login_hint">#999999</color>
+
+
+    <color name="input_register">#888888</color>
+    <color name="input_register_bg">#ffffff</color>
+    <color name="input_register_hint">#5e6266</color>
+
+
+    <color name="btn_login">#26ae90</color>
+    <color name="btn_login_bg">#eceef1</color>
+    <color name="lbl_name">#333333</color>
+
+
+    <color name="btn_logut_bg">#005aff</color>
+</resources>
+

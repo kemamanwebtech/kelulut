@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    tools:context="org.kemaman.kelulut_main.LearnActivity"
+    android:background="@color/bg_register">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="6"
+            android:padding="12dp"
+            android:layout_margin="40dp">
+
+            <Button
+                android:id="@+id/Frieseomelitta"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Frieseomelitta"
+                android:background="@color/btn_logut_bg"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dip"/>
+
+            <Button
+                android:id="@+id/Lestrimelitta"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Lestrimelitta"
+                android:background="@color/btn_logut_bg"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dip"/>
+
+            <Button
+                android:id="@+id/Melipona"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Melipona"
+                android:background="@color/btn_logut_bg"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dip"/>
+
+            <Button
+                android:id="@+id/Tetragonisca"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Tetragonisca"
+                android:background="@color/btn_logut_bg"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dip"/>
+
+
+            <Button
+                android:id="@+id/Trigona"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Trigona"
+                android:background="@color/btn_logut_bg"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dip"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_learn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_info" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_alert" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_discover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_map" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_exam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
