@@ -55,7 +55,7 @@ def process_image(image1, image2, process_id):
     cv2.imwrite(output_path, img3)
 
     # display output image. Disable this later
-    #plt.imshow(img3),plt.show()
+    plt.imshow(img3),plt.show()
 
     # print no of 'good' feature matches
     print(len(good))
