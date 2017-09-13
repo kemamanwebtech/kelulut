@@ -26,10 +26,10 @@
 
         <ImageView
             android:layout_width="fill_parent"
-            android:src="@raw/bee"
-            android:scaleType="fitCenter"
+            android:layout_height="130dp"
             android:padding="10dp"
-            android:layout_height="130dp" />
+            android:scaleType="fitCenter"
+            android:src="@raw/beelogo" />
 
         <EditText
             android:id="@+id/email"

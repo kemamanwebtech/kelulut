@@ -28,7 +28,7 @@ public class ExamActivity extends AppCompatActivity {
         listQuestion = (ArrayList<QuestionDTO>) getIntent().getSerializableExtra("question_list");
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new CustomPagerAdapter(this));
+        // viewPager.setAdapter(new CustomPagerAdapter(this));
 
 
 

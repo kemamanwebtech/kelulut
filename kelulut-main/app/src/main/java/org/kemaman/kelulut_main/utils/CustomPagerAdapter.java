@@ -20,7 +20,7 @@ public class CustomPagerAdapter extends PagerAdapter {
         mContext = context;
     }
 
-    @Override
+    // @Override
     public Object instantiateItem(ViewGroup collection, int position, ArrayList<QuestionDTO> listQuestion ) {
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -34,20 +34,23 @@ public class CustomPagerAdapter extends PagerAdapter {
         collection.removeView((View) view);
     }
 
-    @Override
-    public int getCount() {
-        return listQuestion.size();
-    }
+//    @Override
+//    public int getCount() {
+//        return listQuestion.size();
+//    }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view == object;
     }
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-        ModelObject customPagerEnum = ModelObject.values()[position];
-        return mContext.getString(customPagerEnum.getTitleResId());
-    }
+//    @Override
+//    public CharSequence getPageTitle(int position) {
+//        ModelObject customPagerEnum = ModelObject.values()[position];
+//        return mContext.getString(customPagerEnum.getTitleResId());
+//    }
 
+    public int getCount(){
+        return 1;
+    }
 }
