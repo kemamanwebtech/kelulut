@@ -1,0 +1,12 @@
+sudo apt-get python3
+sudo apt-get install python3-pip
+sudo pip3 install --upgrade pip
+sudo apt-get install python3-tk
+sudo pip3 install Flask
+sudo apt-get install python3-numpy
+sudo pip3 install opencv-python
+sudo pip3 install matplotlib
+
+Setup test Flask
+$ FLASK_APP=hello.py flask run
+ * Running on http://localhost:5000/
