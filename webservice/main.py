@@ -114,7 +114,7 @@ def api_saveLocation():
 
 @app.route('/get-image')
 def api_getImages():
-    user_id = request.args['image_id']
+    image_id = request.args['image_id']
     kelulutDao = dao()
     conn = kelulutDao.getConnection()
     result = kelulutDao.getImage(image_id, conn)
@@ -146,12 +146,5 @@ def uploadImage():
 if __name__ == '__main__':
     app.run()
 
-
-
-
-# List of API
-# URL_UPLOAD = "http://145.239.86.102:5000/upload_image";
-
-# URL_GET_IMAGE = "http://145.239.86.102:5000/get_image";
 
 
