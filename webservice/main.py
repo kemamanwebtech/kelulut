@@ -7,12 +7,13 @@
 from flask import Flask, url_for, request, redirect
 from werkzeug.utils import secure_filename
 from kelulut_dao import dao
+import time
+import os
 
-UPLOAD_FOLDER = '/image-features-matching-module/upload-images'
+UPLOAD_FOLDER = 'uploaded-images'
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
 # example : call http://localhost:5000/?name=hedada
@@ -60,27 +61,87 @@ def api_getSpeciesInfo():
     result = kelulutDao.getSpeciesInfo(genus_name, conn)
     return result
 
+@app.route('/get-questions')
+def api_getQuestions():
+    kelulutDao = dao()
+    conn = kelulutDao.getConnection()
+    result = kelulutDao.getQuestions(conn)
+    return result
+
+@app.route('/get-comments')
+def api_getComments():
+    image_id = request.args['image_id']
+    kelulutDao = dao()
+    conn = kelulutDao.getConnection()
+    result = kelulutDao.getComments(image_id, conn)
+    return result
+
+@app.route('/add-comments')
+def api_addComments():
+    image_id = request.args['image_id']
+    user_id = request.args['user_id']
+    comment = request.args['comment']
+    kelulutDao = dao()
+    conn = kelulutDao.getConnection()
+    result = kelulutDao.addComments(image_id, user_id, comment, conn)
+    return result
+
+@app.route('/save-score')
+def api_saveScore():
+    user_id = request.args['user_id']
+    score = request.args['score']
+    kelulutDao = dao()
+    conn = kelulutDao.getConnection()
+    result = kelulutDao.saveScore(user_id, score, conn)
+    return result
+
+@app.route('/get-location')
+def api_getLocation():
+    user_id = request.args['user_id']
+    kelulutDao = dao()
+    conn = kelulutDao.getConnection()
+    result = kelulutDao.getLocation(user_id, conn)
+    return result
+
+@app.route('/save-location')
+def api_saveLocation():
+    user_id = request.args['user_id']
+    location = request.args['location']
+    kelulutDao = dao()
+    conn = kelulutDao.getConnection()
+    result = kelulutDao.saveLocation(user_id, location, conn)
+    return result
+
+@app.route('/get-image')
+def api_getImages():
+    user_id = request.args['image_id']
+    kelulutDao = dao()
+    conn = kelulutDao.getConnection()
+    result = kelulutDao.getImage(image_id, conn)
+    return result
 
 
+# upload image onto a server file system
+@app.route('/upload-image')
+def uploadImage():
+    # get new image_id
+    kelulutDao = dao()
+    conn = kelulutDao.getConnection()
+    image_id = kelulutDao.getNewImageId(conn)
+    image_id = image_id + 1
 
-@app.route('/uploadImage')
-def upload_file():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-
+    # save image
+    timestr = time.strftime("%Y%m%d-%H%M")
+    file = request.files['image_data']
+    user_id = request.args['user_id']
+    image_des = request.args['image_des']
+    location = request.args['location']
+    filename = str(image_id) + "-" + user_id + "-" + timestr + ".png"
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    image_loc = "uploaded-images/" + filename
+    result = kelulutDao.saveImages(user_id, image_des, image_loc, location)
+    # TOOD perform analysis & update table uploaded_images here
+    return result
 
 if __name__ == '__main__':
     app.run()
@@ -90,9 +151,7 @@ if __name__ == '__main__':
 
 # List of API
 # URL_UPLOAD = "http://145.239.86.102:5000/upload_image";
-# URL_GETLOCATION = "http://145.239.86.102:5000/get_location";
+
 # URL_GET_IMAGE = "http://145.239.86.102:5000/get_image";
-# URL_GET_COMMENT = "http://145.239.86.102:5000/get_comment";
-# URL_ADD_COMMENT = "http://145.239.86.102:5000/add_comment";
-# URL_GET_QUESTION = "http://145.239.86.102:5000/get_question";
-# URL_SAVE_SCORE = "http://145.239.86.102:5000/save_score";
+
+
