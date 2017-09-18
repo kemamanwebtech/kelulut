@@ -6,6 +6,7 @@ sudo pip3 install Flask
 sudo apt-get install python3-numpy
 sudo pip3 install opencv-python
 sudo pip3 install matplotlib
+sudo apt-get install python3-pymysql
 
 Setup test Flask
 $ FLASK_APP=hello.py flask run
