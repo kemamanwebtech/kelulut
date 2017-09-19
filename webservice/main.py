@@ -26,7 +26,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #         return 'Hello John Doe'
 
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def api_register():
     name = request.args['name']
     email = request.args['email']
