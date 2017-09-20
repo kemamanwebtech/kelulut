@@ -83,8 +83,8 @@ class dao():
     def getSpeciesInfo(self, genusName, conn):
         try:
             with conn.cursor() as cursor:
-                sql = "select genus_id from genus where genus_name = %s "
-                cursor.execute(sql, (genusName))
+                sql = "select genus_id from genus where genus_name like %s "
+                cursor.execute(sql, ("%" + genusName + "%"))
                 row = cursor.fetchone()
                 if not row:
                     return "Empty table : " + cursor._executed
