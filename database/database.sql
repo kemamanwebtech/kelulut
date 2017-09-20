@@ -12,7 +12,7 @@ create table kelulut_user (
   username        varchar(255)                        comment 'name of the user',
   location        varchar(255)                        comment 'user location',
   des             varchar(255)                        comment 'profile description of the user',
-  created         datetime                            comment 'date of the creation of this user',
+  created         datetime  						  comment 'date of the creation of this user',
   is_admin        integer                             comment '1 indicates admin user, else normal user',
   primary key (user_id)
 ) comment 'list of users';
@@ -61,7 +61,8 @@ CREATE TABLE uploaded_images (
    image_id       int     NOT NULL AUTO_INCREMENT     COMMENT 'identifies the image',
    user_id        int                                 COMMENT 'identifies the user who uploads this image',
    image_des      varchar(256)                        COMMENT 'description of this image',
-   image_loc      varchar(256)                        COMMENT 'location where the image was uploaded',
+   image_loc      varchar(256)                        COMMENT 'location where the image was stored as file system',
+   location       varchar(256)						  COMMENT 'location where the image was uploaded',
    is_analyzed    int(1)                              COMMENT 'to indicate if the image have been analyzed',
    date_uploaded  datetime                            COMMENT 'the date the image was uploaded',
    species_id     int                                 COMMENT 'the id of the matched species after being analyzed',
