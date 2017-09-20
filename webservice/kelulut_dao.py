@@ -36,7 +36,7 @@ class dao():
                 conn.commit()
 
                 newUserId = cursor.lastrowid
-                sql = "insert into kelulut_login (user_id, email, passwd, created) values (%s, %s, %s, now())"
+                sql = "insert into kelulut_login (user_id, name, passwd, created) values (%s, %s, %s, now())"
                 cursor.execute(sql, (newUserId, email, password))
                 conn.commit()
         except DatabaseError as e:
