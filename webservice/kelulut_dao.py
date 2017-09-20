@@ -66,8 +66,8 @@ class dao():
     def getGenusInfo(self, genusName, conn):
         try:
             with conn.cursor() as cursor:
-                sql = "select genus_name, des, image from genus where genus_name = %s "
-                cursor.execute(sql, (genusName))
+                sql = "select genus_name, des, image from genus where genus_name like %s "
+                cursor.execute(sql, ("%" + genusName + "%"))
                 row = cursor.fetchone()
                 cursor.close()
                 if row:
