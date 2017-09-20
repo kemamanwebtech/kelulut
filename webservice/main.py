@@ -132,7 +132,7 @@ def uploadImage():
 
     # save image
     timestr = time.strftime("%Y%m%d-%H%M")
-    file = request.files['image_data']
+    file = request.args['image_data']
     user_id = request.args['user_id']
     image_des = request.args['image_des']
     location = request.args['location']
