@@ -122,7 +122,7 @@ def api_getImages():
 
 
 # upload image onto a server file system
-@app.route('/upload-image')
+@app.route('/upload-image', methods=['GET', 'POST'])
 def uploadImage():
     # get new image_id
     kelulutDao = dao()
@@ -136,7 +136,7 @@ def uploadImage():
     user_id = request.args['user_id']
     image_des = request.args['image_des']
     location = request.args['location']
-    filename = str(image_id) + "-" + user_id + "-" + timestr + ".png"
+    filename = str(image_id) + "-" + user_id + "-" + timestr + ".jpg"
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     image_loc = "uploaded-images/" + filename
     result = kelulutDao.saveImages(user_id, image_des, image_loc, location)
