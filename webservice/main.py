@@ -9,6 +9,7 @@ from werkzeug.utils import secure_filename
 from kelulut_dao import dao
 import time
 import os
+import base64
 
 UPLOAD_FOLDER = 'uploaded-images'
 app = Flask(__name__)
@@ -137,8 +138,10 @@ def uploadImage():
     image_des = request.args['image_des']
     location = request.args['location']
     filename = str(image_id) + "-" + user_id + "-" + timestr + ".jpg"
-    file.save(os.path.join("/home/kelulut/project/webservice/uploaded-images", filename))
-    #image_loc = "/home/kelulut/project/webservice/uploaded-images/" + filename
+
+    image_loc = "/home/kelulut/project/webservice/uploaded-images/" + filename
+    with open(image_loc, "wb") as fh:
+        fh.write(base64.decodebytes(img_data))
     #result = kelulutDao.saveImages(user_id, image_des, image_loc, location)
     # TOOD perform analysis & update table uploaded_images here
     return "ok"
