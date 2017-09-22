@@ -50,11 +50,11 @@ class dao():
     def login(self, email, password, conn):
         try:
             with conn.cursor() as cursor:
-                sql = "select * from kelulut_login where email = %s and passwd = %s"
+                sql = "select user_id from kelulut_login where email = %s and passwd = %s"
                 cursor.execute(sql, (email, password))
                 result = cursor.fetchone()
                 if (result):
-                    return 'Successfully login'
+                    return 'Successfully login' +  ':' + result
                 else:
                     return 'Invalid login'
         except DatabaseError as e:

@@ -122,7 +122,7 @@ def api_getImages():
 
 
 # upload image onto a server file system
-@app.route('/upload-image', methods=['GET', 'POST'])
+@app.route('/upload-image', methods=['POST'])
 def uploadImage():
     # get new image_id
     kelulutDao = dao()
