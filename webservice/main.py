@@ -1,8 +1,6 @@
 
 # Main Application for the webservice for Kelulut
-# To run : FLASK_APP=main.py flask run
-# Running on http://localhost:5000/
-
+# To allow access from remote, run python3 main.py host=0.0.0.0:5000
 
 from flask import Flask, url_for, request, redirect
 from werkzeug.utils import secure_filename
@@ -10,21 +8,9 @@ from kelulut_dao import dao
 import time
 import os
 import base64
+from traceback import print_exc
 
-UPLOAD_FOLDER = 'uploaded-images'
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
-
-# example : call http://localhost:5000/?name=hedada
-# example args
-# @app.route('/')
-# def api_root():
-#     if 'name' in request.args:
-#         return 'Hello ' + request.args['name']
-#     else:
-#         return 'Hello John Doe'
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -137,25 +123,27 @@ def uploadImage():
     user_id = request.args['user_id']
     image_des = request.args['image_des']
     location = request.args['location']
-    filename = str(image_id) + "-" + user_id + "-" + timestr + ".png"
+    filename = str(image_id) + "-" + user_id + "-" + timestr + ".jpg"
 
     image_loc = "/home/kelulut/project/webservice/uploaded-images/" + filename
+    message = ""
     try :
         with open(image_loc, "wb") as fh:
-            fh.write(base64.decodebytes(file))
-    except Exception as inst:
-        print(type(inst))    # the exception instance
-    #result = kelulutDao.saveImages(user_id, image_des, image_loc, location)
+            fh.write(base64.b64decode(file))
+            return "ok"
+    except Exception as ex:
+    	message = str(print_exc())
+    	return message
+
     # TOOD perform analysis & update table uploaded_images here
-    return str(inst)
+    #result = kelulutDao.saveImages(user_id, image_des, image_loc, location)
 
 @app.route('/shutdown', methods=['POST', 'GET'])
 def shutdown():
     shutdown_server()
     return 'Server shutting down...'
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug = True)
+
 
 
 
@@ -164,3 +152,6 @@ def shutdown_server():
     if func is None:
         raise RuntimeError('Not running with the Werkzeug Server')
     func()
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug = True)
