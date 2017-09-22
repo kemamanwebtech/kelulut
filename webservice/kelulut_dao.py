@@ -32,12 +32,12 @@ class dao():
         try:
             with conn.cursor() as cursor:
                 sql = "insert into kelulut_user (username, created) values (%s, now())"
-                cursor.execute(sql, (username))
+                cursor.execute(sql, (email))
                 conn.commit()
 
                 newUserId = cursor.lastrowid
-                sql = "insert into kelulut_login (user_id, name, passwd, created) values (%s, %s, %s, now())"
-                cursor.execute(sql, (newUserId, email, password))
+                sql = "insert into kelulut_login (user_id, email, passwd, created) values (%s, %s, %s, now())"
+                cursor.execute(sql, (newUserId, username, password))
                 conn.commit()
         except DatabaseError as e:
             return 'Error : ' + str(e)
@@ -54,7 +54,7 @@ class dao():
                 cursor.execute(sql, (email, password))
                 result = cursor.fetchone()
                 if (result):
-                    return 'Successfully login' +  ':' + result
+                    return 'Successfully login' +  ':' + str(result)
                 else:
                     return 'Invalid login'
         except DatabaseError as e:
@@ -244,3 +244,4 @@ class dao():
             return 'Success'
         finally:
             conn.close()
+

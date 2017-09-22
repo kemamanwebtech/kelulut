@@ -130,13 +130,14 @@ def uploadImage():
     try :
         with open(image_loc, "wb") as fh:
             fh.write(base64.b64decode(file))
-            return "ok"
+            # TOOD perform analysis & update table uploaded_images here
+            conn = kelulutDao.getConnection()
+            result = kelulutDao.saveImages(user_id, image_des, image_loc, location, conn)
+            return result
     except Exception as ex:
-    	message = str(print_exc())
+    	message = "Failed" + repr(ex)
     	return message
-
-    # TOOD perform analysis & update table uploaded_images here
-    #result = kelulutDao.saveImages(user_id, image_des, image_loc, location)
+    
 
 @app.route('/shutdown', methods=['POST', 'GET'])
 def shutdown():
