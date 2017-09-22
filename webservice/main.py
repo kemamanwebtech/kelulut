@@ -144,7 +144,7 @@ def uploadImage():
     #    fh.write(base64.decodebytes(file))
     #result = kelulutDao.saveImages(user_id, image_des, image_loc, location)
     # TOOD perform analysis & update table uploaded_images here
-    return "ok"
+    return image_loc
 
 @app.route('/shutdown', methods=['POST', 'GET'])
 def shutdown():
