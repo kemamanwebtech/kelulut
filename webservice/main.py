@@ -140,8 +140,11 @@ def uploadImage():
     filename = str(image_id) + "-" + user_id + "-" + timestr + ".png"
 
     image_loc = "/home/kelulut/project/webservice/uploaded-images/" + filename
-    with open(image_loc, "wb") as fh:
-        fh.write(base64.decodebytes(file))
+    try :
+        with open(image_loc, "wb") as fh:
+            fh.write(base64.decodebytes(file))
+    except Exception as inst:
+        print(type(inst))    # the exception instance
     #result = kelulutDao.saveImages(user_id, image_des, image_loc, location)
     # TOOD perform analysis & update table uploaded_images here
     return image_loc
@@ -152,7 +155,7 @@ def shutdown():
     return 'Server shutting down...'
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug = False)
+    app.run(host='0.0.0.0', debug = True)
 
 
 
