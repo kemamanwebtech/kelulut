@@ -138,10 +138,10 @@ def uploadImage():
     location = request.args['location']
     filename = str(image_id) + "-" + user_id + "-" + timestr + ".jpg"
     file.save(os.path.join("/home/kelulut/project/webservice/uploaded-images", filename))
-    image_loc = "uploaded-images/" + filename
-    result = kelulutDao.saveImages(user_id, image_des, image_loc, location)
+    #image_loc = "/home/kelulut/project/webservice/uploaded-images/" + filename
+    #result = kelulutDao.saveImages(user_id, image_des, image_loc, location)
     # TOOD perform analysis & update table uploaded_images here
-    return result
+    return "ok"
 
 @app.route('/shutdown', methods=['POST', 'GET'])
 def shutdown():
