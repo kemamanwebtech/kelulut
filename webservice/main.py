@@ -147,7 +147,7 @@ def uploadImage():
         print(type(inst))    # the exception instance
     #result = kelulutDao.saveImages(user_id, image_des, image_loc, location)
     # TOOD perform analysis & update table uploaded_images here
-    return image_loc
+    return str(inst)
 
 @app.route('/shutdown', methods=['POST', 'GET'])
 def shutdown():
